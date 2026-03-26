@@ -74,27 +74,31 @@ window.onload = function () {
         setInterval(createConfetti, 100);
     }
 
-    // =========================
-    // 💨 NO BUTTON MOVE
-    // =========================
-    function moveRandomEl(elm) {
-        elm.style.position = "absolute";
+    
+// =========================
+// 💨 NO BUTTON MOVE
+// =========================
+function moveRandomEl(elm) {
+    elm.style.position = "absolute";
 
-        // 🔥 controlled movement
-        elm.style.top = Math.floor(Math.random() * 60 + 20) + "%";
-        elm.style.left = Math.floor(Math.random() * 60 + 20) + "%";
-    }
+    // controlled movement (center area)
+    elm.style.top = Math.floor(Math.random() * 80 + 10) + "%";
+    elm.style.left = Math.floor(Math.random() * 80 + 10) + "%";
+}
 
-    if (moveRandom) {
-        moveRandom.addEventListener("mouseenter", function (e) {
-            moveRandomEl(e.target);
-        });
+if (moveRandom) {
 
-        moveRandom.addEventListener("click", () => {
-            alert("please Man jao naaaaa..... 😭❤️");
-        });
-    }
+    // 💻 Desktop
+    moveRandom.addEventListener("mouseenter", function (e) {
+        moveRandomEl(e.target);
+    });
 
+    // 📱 Mobile
+    moveRandom.addEventListener("touchstart", function (e) {
+        e.preventDefault();
+        moveRandomEl(e.target);
+    });
+}
     document.addEventListener("click", function () {
     const audio = document.getElementById("bg-music");
 
